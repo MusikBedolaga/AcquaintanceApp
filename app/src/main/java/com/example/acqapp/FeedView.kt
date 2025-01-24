@@ -1,14 +1,17 @@
 package com.example.acqapp
 
+import android.widget.Button
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
@@ -21,17 +24,15 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.acqapp.ui.theme.AcqAppTheme
+import androidx.compose.material3.Button
 
 @Composable
 fun FeedView(
@@ -93,6 +94,55 @@ fun FeedViewPreview() {
         FeedView(Modifier.width(305.dp).height(560.dp), "Musa", 18, "Львица в самом соку")
     }
 }
+
+@Composable
+fun LikeOrDislikeView(
+    modifier: Modifier = Modifier,
+    onLike: () -> Unit = { },
+    onDislike: () -> Unit = { }
+) {
+    Row(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Button(
+            onClick = onDislike,
+            modifier = Modifier
+                .size(99.dp, 56.dp)
+                .background(colorResource(id = R.color.button_feed_color))
+        ) {
+            Text(
+                text = "Нет",
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Button(
+            onClick = onLike,
+            modifier = Modifier
+                .size(99.dp, 56.dp)
+                .background(colorResource(id = R.color.button_feed_color))
+        ) {
+            Text(
+                text = "Да",
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
+@Composable
+fun LikeOrDislikeViewPreview() {
+    AcqAppTheme {
+        LikeOrDislikeView()
+    }
+}
+
+
 
 @Composable
 fun TabBar(modifier: Modifier = Modifier) {
@@ -173,3 +223,4 @@ fun TabBarPreview() {
         TabBar()
     }
 }
+
