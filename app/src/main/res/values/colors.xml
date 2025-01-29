@@ -12,4 +12,7 @@
     <color name="button_feed_color">#D7D0D0</color>
 
     <!--  внизу цвета ростика   -->
+    <color name="text_auth_ref_reg_color">#B72668</color>
+    <color name="text_auth_color">#F3F3F3</color>
+
 </resources>
