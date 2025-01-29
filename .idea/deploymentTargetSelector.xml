@@ -3,6 +3,7 @@
   <component name="deploymentTargetSelector">
     <selectionStates>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <SelectionState runConfigName="AcqApp.app">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2025-01-25T01:38:21.917688600Z">
@@ -17,6 +18,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
 >>>>>>> affc0d34574129ce34cd1b3b752ec0141ee96783
+=======
+      <SelectionState runConfigName="app">
+        <option name="selectionMode" value="DROPDOWN" />
+>>>>>>> origin/Musa
       </SelectionState>
     </selectionStates>
   </component>

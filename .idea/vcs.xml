@@ -2,9 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <mapping directory="" vcs="Git" />
 =======
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
 >>>>>>> affc0d34574129ce34cd1b3b752ec0141ee96783
+=======
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+>>>>>>> origin/Musa
   </component>
 </project>
