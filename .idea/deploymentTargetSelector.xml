@@ -2,6 +2,7 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
+<<<<<<< HEAD
       <SelectionState runConfigName="AcqApp.app">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2025-01-24T15:11:50.205965400Z">
@@ -12,6 +13,10 @@
           </Target>
         </DropdownSelection>
         <DialogSelection />
+=======
+      <SelectionState runConfigName="app">
+        <option name="selectionMode" value="DROPDOWN" />
+>>>>>>> affc0d34574129ce34cd1b3b752ec0141ee96783
       </SelectionState>
     </selectionStates>
   </component>
