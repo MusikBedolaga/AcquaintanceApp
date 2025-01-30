@@ -167,7 +167,7 @@ fun RegiView(
 @Composable
 fun RegiViewPreview() {
 
-        var repeatPassword by remember { mutableStateOf("") }
+    var repeatPassword by remember { mutableStateOf("") }
 
     RegiView(
         repeatPassword = repeatPassword,
@@ -176,5 +176,4 @@ fun RegiViewPreview() {
             // Логика обработки регистрации
         }
     )
-
 }
