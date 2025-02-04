@@ -11,14 +11,16 @@ class User {
     @NonNull
     @ColumnInfo(name = "userId")
     var id: Int = 0
+
     @ColumnInfo(name = "userEmail")
-    var email: String=""
+    var email: String = ""
+
     @ColumnInfo(name = "userPassword")
-    var password: Int = 0
+    var password: String = ""
 
     constructor() {}
 
-    constructor(email: String, password: Int) {
+    constructor(email: String, password: String) {
         this.email = email
         this.password = password
     }

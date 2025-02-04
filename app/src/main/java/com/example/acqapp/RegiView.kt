@@ -39,7 +39,7 @@ fun RegiView(
     modifier: Modifier = Modifier,
     repeatPassword: String,
     onRepeatPasswordChange: (String) -> Unit,
-    onRegisterClick: (String, String, String) -> Unit
+    onRegisterClick: (String, String) -> Unit
 ){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -134,11 +134,11 @@ fun RegiView(
 
             Button(
                 onClick = {
-                    // Здесь можно добавить проверку на совпадение паролей
+                    // Проверка на совпадение паролей
                     if (password == repeatPassword) {
-                        onRegisterClick(email, password, repeatPassword) // Вызов обработчика регистрации
+                        onRegisterClick(email, password) // Вызов обработчика регистрации
                     } else {
-                        // Реализуйте логику обработки несовпадения паролей, например, показать сообщение
+                        // Здесь можно показать сообщение об ошибке
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.text_feed_color)),
@@ -172,7 +172,7 @@ fun RegiViewPreview() {
     RegiView(
         repeatPassword = repeatPassword,
         onRepeatPasswordChange = { repeatPassword = it },
-        onRegisterClick = { email, password, repeat ->
+        onRegisterClick = { email, password ->
             // Логика обработки регистрации
         }
     )
