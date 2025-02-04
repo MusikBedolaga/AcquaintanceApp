@@ -4,7 +4,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun MainView() {
+fun MainView(viewModel: UserViewModel) {
     var currentScreen by remember { mutableStateOf(Screen.Auth) }
     var repeatPassword by remember { mutableStateOf("") }
 
@@ -21,12 +21,16 @@ fun MainView() {
             repeatPassword = repeatPassword,
             onRepeatPasswordChange = { repeatPassword = it },
             onRegisterClick = { email, password, _ ->
+                viewModel.changeEmail(email)
+                viewModel.changePasswoed(password)
+                viewModel.addUser()
                 currentScreen = Screen.Feed
             }
         )
         Screen.Feed -> FeedView()
     }
 }
+
 
 
 enum class Screen {

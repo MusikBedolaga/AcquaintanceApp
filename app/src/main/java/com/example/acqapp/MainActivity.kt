@@ -27,7 +27,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AcqAppTheme {
-                MainView()
+                val userViewModel: UserViewModel = viewModel(factory = UserViewModelFactory(application))
+                // Передаем его в MainView
+                MainView(viewModel = userViewModel)
             }
         }
     }

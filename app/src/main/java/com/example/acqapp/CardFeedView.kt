@@ -46,6 +46,7 @@ fun CardFeedView(
                 modifier = Modifier
                     .padding(10.dp)
                     .size(284.dp, 390.dp)
+                    .fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(10.dp))
