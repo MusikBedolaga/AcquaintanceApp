@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -17,16 +18,43 @@ sealed class UserResult {
 }
 
 class UserViewModel(application: Application) : ViewModel() {
-    val userList: LiveData<List<User>>
+    val userList: MutableLiveData<List<User>> = MutableLiveData()
     private val repository: UserRepository
     var userEmail by mutableStateOf("")
     var userPassword by mutableStateOf("")
+    var currentUserIndex by mutableStateOf(0)
 
     init {
         val userDb = UserRoomDatabase.getInstance(application)
         val userDao = userDb.userDao()
         repository = UserRepository(userDao)
-        userList = repository.userList
+        loadAllUsers()
+    }
+
+    private fun loadAllUsers() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val users = repository.getAllUsers() // Получаем всех пользователей
+            userList.postValue(users) // Обновляем LiveData
+            // Устанавливаем индекс текущего пользователя
+            currentUserIndex = if (users.isNotEmpty()) 0 else -1
+        }
+    }
+
+    fun nextUser() {
+        val users = userList.value ?: return
+        if (currentUserIndex < users.size - 1) {
+            currentUserIndex++
+        }
+    }
+
+    fun previousUser() {
+        if (currentUserIndex > 0) {
+            currentUserIndex--
+        }
+    }
+
+    fun getCurrentUser(): User? {
+        return userList.value?.get(currentUserIndex)
     }
 
     fun changeEmail(value: String) {

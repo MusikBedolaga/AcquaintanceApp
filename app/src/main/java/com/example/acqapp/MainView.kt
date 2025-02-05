@@ -53,7 +53,7 @@ fun MainView(viewModel: UserViewModel) {
                 }
             }
         )
-        Screen.Feed -> FeedView()
+        Screen.Feed -> FeedView(viewModel = viewModel)
     }
 
     // Сообщение об ошибке (если есть)

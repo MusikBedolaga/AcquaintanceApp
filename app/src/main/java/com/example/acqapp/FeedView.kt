@@ -25,17 +25,35 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.acqapp.ui.theme.AcqAppTheme
 import androidx.compose.material3.Button
+import androidx.compose.runtime.rememberUpdatedState
 
 @Composable
-fun FeedView(modifier: Modifier = Modifier) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        CardFeedView(modifier.padding(top = 100.dp, start = 20.dp, end = 20.dp))
+fun FeedView(viewModel: UserViewModel, modifier: Modifier = Modifier) {
+    val currentUser = viewModel.getCurrentUser()
 
-        Spacer(modifier = Modifier.height(30.dp))
+    Column(modifier = Modifier.fillMaxSize()) {
+        if (currentUser != null) {
+            CardFeedView(
+                modifier = modifier.padding(top = 100.dp, start = 20.dp, end = 20.dp),
+                name = currentUser.email,
+                age = 19,
+                userStatus = "Львица в самом соку"
+            )
 
-        LikeOrDislikeView(modifier.padding(start = 15.dp, end = 15.dp))
+            Spacer(modifier = Modifier.height(30.dp))
+
+            LikeOrDislikeView(
+                modifier = Modifier.padding(start = 15.dp, end = 15.dp),
+                onLike = {
+                    viewModel.nextUser()
+                },
+                onDislike = {
+                    viewModel.previousUser()
+                }
+            )
+        } else {
+            Text("Нет пользователей для отображения")
+        }
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -44,11 +62,12 @@ fun FeedView(modifier: Modifier = Modifier) {
 }
 
 
+
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun FeedViewPreview() {
     AcqAppTheme() {
-        FeedView()
+//        FeedView()
     }
 }
 
